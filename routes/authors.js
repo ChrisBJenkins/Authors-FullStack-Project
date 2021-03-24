@@ -27,12 +27,12 @@ router.get('/new', (req, res) => {
 })
 
 // Create Authors Route
-router.post('/', urlencodedParser, (req, res) => {
+router.post('/', urlencodedParser, async (req, res) => {
     const author = new Author({
         name: req.body.name
     })
     try {
-        const newAuthor = author.save(Author)
+        const newAuthor = await author.save(Author)
         // res.redirect(`authors/${newAuthor.id}`)
         res.redirect(`authors`)
     } catch {
